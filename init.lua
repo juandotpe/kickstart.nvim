@@ -43,6 +43,8 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.tmux_navigator_no_mappings = 1
+
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
@@ -233,6 +235,12 @@ require('lazy').setup({
   {
     -- Integration with tmux navigation
     'christoomey/vim-tmux-navigator',
+    keys = {
+      { '<c-w>h', '<cmd>TmuxNavigateLeft<cr>',  { noremap = true, silent = true } },
+      { '<c-w>j', '<cmd>TmuxNavigateDown<cr>',  { noremap = true, silent = true } },
+      { '<c-w>k', '<cmd>TmuxNavigateUp<cr>',    { noremap = true, silent = true } },
+      { '<c-w>l', '<cmd>TmuxNavigateRight<cr>', { noremap = true, silent = true } }
+    }
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
