@@ -151,12 +151,23 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    -- Theme
+    'igemnace/highlight.vim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+      vim.o.background = 'dark'
+      vim.cmd('colorscheme Highlight')
+      vim.cmd([[	
+        hi LineNr guifg=#5b5b5b
+        hi CursorLineNR guifg=#888888
+        hi DiagnosticError guifg=#ff8787 ctermfg=210
+
+        " specific to Highlight colorscheme
+        highlight! link  Number   TextMagenta
+        highlight! link  Float    Number
+        highlight! link  Boolean  Number
+      ]])
+    end
   },
 
   {
