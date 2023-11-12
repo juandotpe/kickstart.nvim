@@ -303,6 +303,9 @@ vim.o.swapfile = false
 -- Highlighting and pattern matching for large files
 vim.o.mmp = 10000
 
+-- Disable mode label in command area below lualine
+vim.o.showmode = false
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
