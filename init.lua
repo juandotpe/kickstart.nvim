@@ -159,7 +159,7 @@ require('lazy').setup({
     config = function()
       vim.o.background = 'dark'
       vim.cmd('colorscheme Highlight')
-      vim.cmd([[	
+      vim.cmd([[
         hi LineNr guifg=#5b5b5b
         hi CursorLineNR guifg=#888888
         hi DiagnosticError guifg=#ff8787 ctermfg=210
