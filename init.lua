@@ -156,11 +156,13 @@ require('lazy').setup({
         hi LineNr guifg=#5b5b5b
         hi CursorLineNR guifg=#888888
         hi DiagnosticError guifg=#ff8787 ctermfg=210
+        hi IblIndent cterm=NONE ctermfg=239 ctermbg=NONE gui=NONE guifg=#4e4e4e guibg=NONE guisp=NONE
+        hi IblScope cterm=NONE ctermfg=241 ctermbg=NONE gui=NONE guifg=#626262 guibg=NONE guisp=NONE
 
         " specific to Highlight colorscheme
-        highlight! link  Number   TextMagenta
-        highlight! link  Float    Number
-        highlight! link  Boolean  Number
+        highlight! link  Number    TextMagenta
+        highlight! link  Float     Number
+        highlight! link  Boolean   Number
       ]])
     end
   },
@@ -186,8 +188,12 @@ require('lazy').setup({
     -- See `:help ibl`
     main = 'ibl',
     opts = {
+      indent = {
+        char = '┊',
+      },
       scope = {
-        show_start = false
+        show_start = false,
+        char = '│',
       }
     },
   },
