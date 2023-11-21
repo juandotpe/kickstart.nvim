@@ -101,6 +101,9 @@ require('lazy').setup({
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
+      -- Snippet Engine & its associated nvim-cmp source
+      'L3MON4D3/LuaSnip',
+
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
     },
@@ -584,6 +587,9 @@ mason_lspconfig.setup_handlers {
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+luasnip.config.setup({})
 
 cmp.setup({
   mapping = cmp.mapping.preset.insert {
@@ -613,6 +619,11 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
+  },
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end
   },
 })
 
