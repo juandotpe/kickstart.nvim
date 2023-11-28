@@ -182,6 +182,11 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+      inactive_sections = { lualine_c = { { "filename", path = 1 } } },
+      sections = {
+        lualine_b = { { "filename", path = 1 } },
+        lualine_c = { "diff", "diagnostics" }
+      }
     },
   },
 
