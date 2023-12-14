@@ -18,6 +18,7 @@ return {
         -- LSP
         lua = formatters.lsp,
         go = formatters.lsp,
+        rust = formatters.lsp,
 
         -- Custom
         typescript = formatters.prettierd,
