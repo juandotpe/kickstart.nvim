@@ -302,7 +302,19 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' }, -- has jsx/tsx support
+    config = function()
+      local comment = require('Comment')
+      local ts_context_commentstring = require('ts_context_commentstring.integrations.comment_nvim')
+      comment.setup({
+        -- https://github.com/numToStr/Comment.nvim?tab=readme-ov-file#-hooks
+        pre_hook = ts_context_commentstring.create_pre_hook()
+      })
+    end,
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
