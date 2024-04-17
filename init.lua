@@ -242,26 +242,13 @@ require('lazy').setup({
     },
   },
 
+  -- Theme
   {
-    -- Theme
-    'igemnace/highlight.vim',
-    priority = 1000,
+    'rebelot/kanagawa.nvim',
     config = function()
-      vim.o.background = 'dark'
-      vim.cmd('colorscheme Highlight')
-      vim.cmd([[
-        hi LineNr guifg=#5b5b5b
-        hi CursorLineNR guifg=#888888
-        hi DiagnosticError guifg=#ff8787 ctermfg=210
-        hi TextGreen  cterm=NONE ctermfg=108 ctermbg=NONE gui=NONE guifg=#87af87 guibg=NONE guisp=NONE
-        hi IblIndent  cterm=NONE ctermfg=239 ctermbg=NONE gui=NONE guifg=#4e4e4e guibg=NONE guisp=NONE
-        hi IblScope   cterm=NONE ctermfg=241 ctermbg=NONE gui=NONE guifg=#626262 guibg=NONE guisp=NONE
-
-        " specific to Highlight colorscheme
-        highlight! link  Number    TextMagenta
-        highlight! link  Float     Number
-        highlight! link  Boolean   Number
-      ]])
+      local k = require('kanagawa')
+      k.setup({ statementStyle = { bold = false } })
+      k.load('wave')
     end
   },
 
