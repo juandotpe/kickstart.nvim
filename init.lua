@@ -378,6 +378,11 @@ require('lazy').setup({
     build = function() vim.fn["mkdp#util#install"]() end,
   },
 
+  {
+    -- Zip files
+    "lbrayner/vim-rzip"
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -391,7 +396,14 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
-}, {})
+}, {
+  -- The current version of lazy.nvim uses 16 concurrent proccesses by default
+  -- for fetching packages and updates from github. Given the amount of packages
+  -- this configuration uses, github rate-limits me resulting in a timeout when
+  -- doing a mass update.
+  concurrency = 4
+
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
