@@ -22,8 +22,10 @@ return {
 
         -- Custom
         typescript = formatters.prettierd,
-        typescriptreact = formatters.prettierd,
         javascript = formatters.prettierd,
+        typescriptreact = formatters.prettierd,
+        javascriptreact = formatters.prettierd,
+        markdown = formatters.prettierd,
         sh = formatters.shfmt,
       }
     }
