@@ -379,8 +379,29 @@ require('lazy').setup({
   },
 
   {
-    -- Zip files
-    "lbrayner/vim-rzip"
+    -- Apple PKL
+    "apple/pkl-neovim",
+    lazy = true,
+    ft = "pkl",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "L3MON4D3/LuaSnip",
+    },
+    build = function()
+      require('pkl-neovim.internal').init()
+
+      -- Set up syntax highlighting.
+      -- Had to wrap it in a vim.schedule because TSInstall was not available
+      -- when the build function was run, despite being a dependency.
+      -- Not sure if it's a bug.
+      vim.schedule(function()
+        vim.cmd("TSInstall! pkl")
+      end)
+    end,
+    config = function()
+      -- Set up snippets. Omitted for now.
+      -- require("luasnip.loaders.from_snipmate").lazy_load()
+    end,
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
