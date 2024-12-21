@@ -1,3 +1,9 @@
+-- Set cwd when opening in Neovide
+if vim.g.neovide then
+  -- Set ~/src as current directory when opening neovide
+  vim.api.nvim_set_current_dir(vim.fn.expand("~/src"))
+end
+
 --[[
 
 =====================================================================
