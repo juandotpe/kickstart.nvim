@@ -2,6 +2,27 @@
 if vim.g.neovide then
   -- Set ~/src as current directory when opening neovide
   vim.api.nvim_set_current_dir(vim.fn.expand("~/src"))
+
+  -- Paste using cmd+v in insert mode
+  vim.keymap.set("i", "<D-v>", "<C-R>+")
+
+  -- Paste using cmd+v in command mode
+  vim.keymap.set("c", "<D-v>", function()
+    local clipboard_content = vim.fn.getreg('"')
+
+    if clipboard_content:sub(1, 1) == ":" then
+      clipboard_content = clipboard_content:sub(2)
+    end
+
+    -- vim.api.nvim_feedkeys(clipboard_content, "n", true)
+    vim.fn.feedkeys(clipboard_content, "n")
+  end)
+
+  -- Paste using cmd+v in terminal mode
+  vim.keymap.set("t", "<D-v>", '<C-\\><C-n>"+Pi')
+
+  -- Font
+  vim.opt.guifont = "JetBrains Mono NL"
 end
 
 --[[
@@ -471,6 +492,9 @@ vim.o.splitright = true
 -- Disable line wrapping
 vim.o.wrap = false
 
+-- Cursor styles: vertical on insert mode
+vim.opt.guicursor = 'i:ver25-blinkwait200-blinkoff500-blinkon300'
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -664,6 +688,8 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+require('configs.term')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
