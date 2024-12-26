@@ -286,11 +286,14 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'everforest',
+        theme = 'base16',
         component_separators = '|',
         section_separators = '',
       },
-      inactive_sections = { lualine_c = { { "filename", path = 1 } } },
+      inactive_sections = {
+        lualine_a = { function() return "[" .. vim.fn.winnr() .. "]" end },
+        lualine_c = { { "filename", path = 1 }, },
+      },
       sections = {
         lualine_b = { { "filename", path = 1 } },
         lualine_c = { "diff", "diagnostics" }
