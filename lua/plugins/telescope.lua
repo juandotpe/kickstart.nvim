@@ -56,6 +56,7 @@ return {
       telescope_with_theme(require("telescope").extensions.project.project,
         { display_type = "full", hide_workspace = true }),
       { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>x', telescope_with_theme(t_builtin.commands), { desc = '[S]earch [C]ommands' })
 
     -- Enable telescope fzf native, if installed
     require("telescope").load_extension("fzf")
