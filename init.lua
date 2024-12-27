@@ -274,7 +274,11 @@ require('lazy').setup({
     'rebelot/kanagawa.nvim',
     config = function()
       local k = require('kanagawa')
-      k.setup({ statementStyle = { bold = false } })
+      k.setup({
+        statementStyle = { bold = false },
+        keywordStyle = { italic = false },
+        commentStyle = { italic = true },
+      })
       k.load('wave')
     end
   },
