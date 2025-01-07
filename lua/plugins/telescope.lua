@@ -22,6 +22,13 @@ return {
   },
   config = function()
     require("telescope").setup({
+      defaults = {
+        mappings = {
+          i = {
+            ["<esc>"] = require("telescope.actions").close,
+          },
+        },
+      },
       extensions = {
         project = {
           on_project_selected = function(prompt_bufnr)
