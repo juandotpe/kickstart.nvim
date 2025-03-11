@@ -501,8 +501,13 @@ vim.o.splitright = true
 -- Disable line wrapping
 vim.o.wrap = false
 
--- Cursor styles: vertical on insert mode
+-- Vertical cursro on insert mode and revert to underscore on exit to match the
+-- cursor styles set in tmux.conf.
 vim.opt.guicursor = 'i:ver25-blinkwait200-blinkoff500-blinkon300'
+vim.api.nvim_create_autocmd("VimLeave", {
+  pattern = "*",
+  command = "set guicursor=a:hor10-blinkwait0-blinkoff500-blinkon500",
+})
 
 -- [[ Basic Keymaps ]]
 
