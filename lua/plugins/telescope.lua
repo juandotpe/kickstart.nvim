@@ -42,7 +42,6 @@ return {
       }
     })
 
-    local t_builtin = require("telescope.builtin")
     local telescope_with_theme = function(picker, opts)
       local default_opts = {
         layout_config = { height = 15 },
@@ -56,14 +55,17 @@ return {
       end
     end
 
+    local t_builtin = require("telescope.builtin")
     vim.keymap.set('n', '<leader>sf', telescope_with_theme(t_builtin.find_files), { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>sh', telescope_with_theme(t_builtin.help_tags), { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sg', telescope_with_theme(t_builtin.live_grep), { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>x', telescope_with_theme(t_builtin.commands), { desc = '[S]earch [C]ommands' })
+    vim.keymap.set('n', '<leader>st', telescope_with_theme(t_builtin.builtin), { desc = '[S]earch [T]elescope' })
+
     vim.keymap.set('n', '<leader>sp',
       telescope_with_theme(require("telescope").extensions.project.project,
         { display_type = "full", hide_workspace = true }),
-      { desc = '[S]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>x', telescope_with_theme(t_builtin.commands), { desc = '[S]earch [C]ommands' })
+      { desc = '[S]earch by [P]roject' })
 
     -- Enable telescope fzf native, if installed
     require("telescope").load_extension("fzf")
