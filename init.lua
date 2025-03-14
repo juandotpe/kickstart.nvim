@@ -352,6 +352,16 @@ require('lazy').setup({
   },
 
   {
+    -- Add context information at the top of the buffer if contents of context
+    -- exceed the height of the buffer. Useful for really long functions where
+    -- the name of the function is above the visible lines.
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter'
+    },
+  },
+
+  {
     -- Integration with tmux navigation
     'christoomey/vim-tmux-navigator',
     keys = {
