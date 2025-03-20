@@ -423,6 +423,48 @@ require('lazy').setup({
     end,
   },
 
+  -- Configuration for codecompanion.nvim plugin.
+  -- Adds chat buffer with various options for context and inline capabilitites.
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      adapters = {
+        ollama_chat = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            name = "ollama_chat",
+            schema = {
+              model = {
+                default = "qwen2.5-coder:14b",
+              }
+            }
+          })
+        end,
+        ollama_inline = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            name = "ollama_inline",
+            schema = {
+              model = {
+                default = "qwen2.5-coder:7b",
+              }
+            }
+          })
+        end
+      },
+      strategies = {
+        chat = {
+          adapter = "ollama_chat",
+        },
+        inline = {
+          adapter = "ollama_inline",
+        }
+      },
+    }
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
