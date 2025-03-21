@@ -282,8 +282,46 @@ require('lazy').setup({
         keywordStyle = { italic = false },
         commentStyle = { italic = true },
       })
-      k.load('wave')
+      -- k.load('wave')
     end
+  },
+
+  -- Theme: lackluster
+  {
+    "slugbyte/lackluster.nvim",
+    lazy = false,
+    priority = 1000,
+    init = function()
+      vim.cmd.colorscheme("lackluster")
+    end,
+    config = function()
+      local lackluster = require("lackluster")
+      lackluster.setup({
+        disable_plugin = {},
+        tweak_syntax = {
+          comment = lackluster.color.gray5,
+          string = lackluster.color.green,
+          keyword = lackluster.color.gray7,
+        },
+        tweak_highlight = {
+          ["@comment"] = {
+            italic = true,
+          },
+          ["@number"] = {
+            fg = lackluster.color.orange,
+          },
+          ["@boolean"] = {
+            fg = lackluster.color.orange,
+          }
+        },
+        tweak_background = {
+          normal = "#1e1e1e",
+          telescope = lackluster.color.gray3,
+        }
+      })
+
+      vim.cmd.colorscheme("lackluster")
+    end,
   },
 
   -- Set lualine as statusline
