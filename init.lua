@@ -72,7 +72,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.tmux_navigator_no_mappings = 1
 
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -108,9 +107,10 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
+  -- The configuration is done below. Search for lspconfig to find it below.
+
+  -- LSP Configuration & Plugins
   {
-    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -126,7 +126,8 @@ require('lazy').setup({
     },
   },
 
-  { -- Autocompletion
+  -- Autocompletion
+  {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
@@ -232,8 +233,8 @@ require('lazy').setup({
     end,
   },
 
+  -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -271,7 +272,7 @@ require('lazy').setup({
     },
   },
 
-  -- Theme
+  -- Kanagawa Theme
   {
     'rebelot/kanagawa.nvim',
     config = function()
@@ -285,8 +286,8 @@ require('lazy').setup({
     end
   },
 
+  -- Set lualine as statusline
   {
-    -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
@@ -342,8 +343,8 @@ require('lazy').setup({
   -- Telescope: fuzzy binder (files, lsp, etc)
   require("plugins.telescope"),
 
+  -- Highlight, edit, and navigate code
   {
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -351,18 +352,18 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- Add context information at the top of the buffer if contents of context
+  -- exceed the height of the buffer. Useful for really long functions where
+  -- the name of the function is above the visible lines.
   {
-    -- Add context information at the top of the buffer if contents of context
-    -- exceed the height of the buffer. Useful for really long functions where
-    -- the name of the function is above the visible lines.
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = {
       'nvim-treesitter/nvim-treesitter'
     },
   },
 
+  -- Integration with tmux navigation
   {
-    -- Integration with tmux navigation
     'christoomey/vim-tmux-navigator',
     keys = {
       { '<c-w>h', '<cmd>TmuxNavigateLeft<cr>',  { noremap = true, silent = true } },
@@ -372,8 +373,8 @@ require('lazy').setup({
     }
   },
 
+  -- LSP diagnostics UI
   {
-    -- LSP diagnostics UI
     'folke/trouble.nvim',
     opts = {
       focus = true,
@@ -389,16 +390,16 @@ require('lazy').setup({
     },
   },
 
+  -- Markdown preview
   {
-    -- Markdown preview
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
 
+  -- Apple PKL
   {
-    -- Apple PKL
     "apple/pkl-neovim",
     lazy = true,
     ft = "pkl",
