@@ -296,28 +296,34 @@ require('lazy').setup({
     end,
     config = function()
       local lackluster = require("lackluster")
+      local magenta = "#af87af"
+
       lackluster.setup({
         disable_plugin = {},
         tweak_syntax = {
           comment = lackluster.color.gray5,
           string = lackluster.color.green,
-          keyword = lackluster.color.gray7,
+          builtin = lackluster.color.gray6,
+          keyword = lackluster.color.gray6,
         },
         tweak_highlight = {
           ["@comment"] = {
             italic = true,
           },
           ["@number"] = {
-            fg = lackluster.color.orange,
+            fg = magenta,
           },
           ["@boolean"] = {
-            fg = lackluster.color.orange,
+            fg = magenta,
+          },
+          ["colorcolumn"] = {
+            bg = "#1d1d1d"
           }
         },
         tweak_background = {
-          normal = "#1e1e1e",
-          telescope = lackluster.color.gray3,
-        }
+          normal = lackluster.color.gray2,
+          telescope = lackluster.color.gray1,
+        },
       })
 
       vim.cmd.colorscheme("lackluster")
