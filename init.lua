@@ -275,6 +275,8 @@ require('lazy').setup({
   -- Kanagawa Theme
   {
     'rebelot/kanagawa.nvim',
+    lazy = false,
+    priority = 1000,
     config = function()
       local k = require('kanagawa')
       k.setup({
@@ -282,52 +284,8 @@ require('lazy').setup({
         keywordStyle = { italic = false },
         commentStyle = { italic = true },
       })
-      -- k.load('wave')
+      k.load('wave')
     end
-  },
-
-  -- Theme: lackluster
-  {
-    "slugbyte/lackluster.nvim",
-    lazy = false,
-    priority = 1000,
-    init = function()
-      vim.cmd.colorscheme("lackluster")
-    end,
-    config = function()
-      local lackluster = require("lackluster")
-      local magenta = "#af87af"
-
-      lackluster.setup({
-        disable_plugin = {},
-        tweak_syntax = {
-          comment = lackluster.color.gray5,
-          string = lackluster.color.green,
-          builtin = lackluster.color.gray6,
-          keyword = lackluster.color.gray6,
-        },
-        tweak_highlight = {
-          ["@comment"] = {
-            italic = true,
-          },
-          ["@number"] = {
-            fg = magenta,
-          },
-          ["@boolean"] = {
-            fg = magenta,
-          },
-          ["colorcolumn"] = {
-            bg = "#1d1d1d"
-          }
-        },
-        tweak_background = {
-          normal = lackluster.color.gray2,
-          telescope = lackluster.color.gray1,
-        },
-      })
-
-      vim.cmd.colorscheme("lackluster")
-    end,
   },
 
   -- Set lualine as statusline
