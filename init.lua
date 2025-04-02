@@ -299,15 +299,17 @@ require('lazy').setup({
         theme = "seoul256",
         component_separators = '|',
         section_separators = '',
+        ignore_focus = { 'dapui_scopes', 'dapui_breakpoints',
+          'dapui_watches', 'dapui_stacks', 'dap-repl', 'dapui_console' },
       },
       inactive_sections = {
-        lualine_a = { function() return "[" .. vim.fn.winnr() .. "]" end },
         lualine_c = { { "filename", path = 1 }, },
+        lualine_x = {},
       },
       sections = {
         lualine_b = { { "filename", path = 1 } },
         lualine_c = { "diff", "diagnostics" }
-      }
+      },
     },
   },
 
@@ -473,7 +475,7 @@ require('lazy').setup({
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
   require('kickstart.plugins.autoformat'),
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -687,9 +689,9 @@ local on_attach = function(client, bufnr)
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  -- nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+  -- nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  -- nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
