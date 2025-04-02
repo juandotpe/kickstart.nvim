@@ -280,6 +280,7 @@ require('lazy').setup({
     config = function()
       local k = require('kanagawa')
       k.setup({
+        transparent = true,
         statementStyle = { bold = false },
         keywordStyle = { italic = false },
         commentStyle = { italic = true },
